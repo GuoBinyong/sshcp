@@ -1,5 +1,7 @@
 # 简介
-sshcp 命令可 把 sour 目录中的所有文件和目录 上传到 服务器中 targ 目录中；
+sshcp 命令使您可以通过一个简短的命令就把把本地指定目录中的所有文件和目录 上传到 服务器的指定目录中，或者 直接登录并转到服务器的相应目录；
+
+[主页](https://github.com/GuoBinyong/sshcp)
 
 # 语法
 ```
@@ -10,13 +12,13 @@ sshcp [-tp|--type type] [-c|--conf conf] [-pw|--password password] [-h|--host ho
 
 sshcp 命令支持以下选项
 
-* -tp|--type  : 配置文件的类型 该类型会作为- 配置文件的后缀名
+* -tp|--type  : 配置文件的类型，指定该参数，会优先匹配带有以该类型作为后缀名的配置文件；
 * -c|--conf  : 配置文件的路径
 * -n|--name  : ssh登录时的用户名
 * -pw|--password  : 用户名对应的密码
 * -h|--host : 服务器的地址
 * -p|--prot : 服务器的端口
-* -s|--sour  : 源目录
+* -s|--sour  : 源目录；默认值：当前目录；
 * -t|--targ  : 服器上的目标目录
 * -d|--dele : 在上传sour目录中的文件之前，是否删除 targ 目录中的所有文件； 0 : 不删除；1 : 删除； 默认值: 1 ;
 * -help|--help|help  : 输出 sshcp 命令的帮助信息
@@ -24,7 +26,7 @@ sshcp 命令支持以下选项
 
 
 # 配置文件
-配置文件是作为 tcl 脚本被优先执行的
+配置文件是作为 tcl 脚本被优先执行的，所以配置文件中可以书写 tcl 代码来实现更加细粒度的控制和配置；
 
 ## 配置文件可存放在两个地方
 - 用户级配置文件：存放在~/.sshcp/ 目录下，文件名为 sshcprc；后缀名为 type 选项和变量设置的字符串，如果没有配置 type 选项和变量，则没有后缀名
@@ -48,58 +50,58 @@ sshcp 命令支持以下选项
 
 # 可配置变量
 
-配置文件中可设置的变量及其语法如下
+配置文件中可设置的变量及其语法示例如下
 
 ## type
-配置文件的类型 该类型会作为配置文件的后缀名
+配置文件的类型 该类型会作为配置文件的后缀名；
 ```
-set type ""
+set type "dev"
 ```
 
 ## conf
 配置文件的路径
 ```
-set conf "$env(PWD)/sshcprc"
+set conf "sshcprc"
 ```
 
 ## name
 ssh登录时的用户名
 ```
-set name ""
+set name "root"
 ```
 
 ## password
 用户名对应的密码
 ```
-set password ""
+set password "123456789"
 ```
 
 ## host
 服务器的地址
 ```
-set host ""
+set host "192.168.90.33"
 ```
 
 ## prot
 服务器的端口
 ```
-set prot ""
+set prot "9033"
 ```
 
 ## sour
-源目录
+源目录；默认值：当前目录；
 ```
-set sour "."
+set sour "dist"
 ```
 
 ## targ
 服器上的目标目录
 ```
-set targ ""
+set targ "/data/mc/website/guo.binyong.com/www/webapp"
 ```
 
 ## dele
-在上传sour目录中的文件之前，是否删除 targ 目录中的所有文件
+在上传sour目录中的文件之前，是否删除 targ 目录中的所有文件； 0 : 不删除；1 : 删除； 默认值: 1 ;
 ```
 set dele 1
 ```
