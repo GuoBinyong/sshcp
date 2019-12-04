@@ -5,8 +5,12 @@
 [Homebrew]: https://brew.sh
 
 
+
+
 # 简介
-sshcp 命令使您可以通过一个简短的命令就把把本地指定目录中的所有文件和目录 上传到 服务器的指定目录中，或者 直接登录并转到服务器的相应目录；
+sshcp 命令使您可以通过一个简短的命令就实现如下功能：
+* 把本地指定目录或文件 上传到 服务器的指定的目标目录中，上传之前也可配置是否要清空服务器的目标目录；
+* 自动登录服务器，并转到指定的目标目录中；
 
 [主页](https://github.com/GuoBinyong/sshcp)
 
@@ -83,9 +87,11 @@ curl https://raw.githubusercontent.com/GuoBinyong/sshcp/master/sshcp -o /usr/loc
 
 
 
+
+
 # 语法
 ```
-sshcp [-tp|--type type] [-c|--conf conf] [-pw|--password password] [-h|--host host] [-p|--prot prot] [-s|--sour sour] [-t|--targ targ] [-d|--dele dele]
+sshcp [-tp|--type type] [-c|--conf conf] [-pw|--password password] [-h|--host host] [-p|--prot prot] [-s|--sour sour] [-t|--targ targ] [-d|--dele dele] [-pmt|--prompt prompt]
 ```
 
 # 选项
@@ -98,10 +104,17 @@ sshcp 命令支持以下选项
 * -pw|--password  : 用户名对应的密码
 * -h|--host : 服务器的地址
 * -p|--prot : 服务器的端口
-* -s|--sour  : 源目录；默认值：当前目录；
+* -s|--sour  : 源目录；
+   * 如果没有给该参数配置有效的值，则会进入交互模式，即：登录服务器并跳转到目标目录后，自动将控制权交给用户；
+   * 如果该参数的值是以 / 结尾的目录路径，则会将该目录下的所有文件 和 文件夹 都上传到服务器的目标目录下；
+   * 如果该参数的值不是以 / 结尾的 目录或文件，则会将 该目录 或 文件 上传到服务器的目标目录下；
 * -t|--targ  : 服器上的目标目录
 * -d|--dele : 在上传sour目录中的文件之前，是否删除 targ 目录中的所有文件； 0 : 不删除；1 : 删除； 默认值: 1 ;
 * -help|--help|help  : 输出 sshcp 命令的帮助信息
+* -pmt|--prompt  : 能匹配服务器的命令行提示符的字符串 或 正则表达式； 默认值：\S，即表示：包含非空字符的字符串；
+   * 该参数只有在交互模式下才有效；
+   * 该参数有助于精准识别 ssh 登录成功；
+   * 由于该参数保存的是正则表达式，所以为了避免 tcl 正则的特殊字符 当作 tcl 的特殊字符去展开，建义在使用配置文件配置该参数时，将配置的正则表达式用 花括号 {} 包裹着；
 
 
 
@@ -190,7 +203,10 @@ set prot "9033"
 ```
 
 ## sour
-源目录；默认值：当前目录；
+源目录；
+* 如果没有给该参数配置有效的值，则会进入交互模式，即：登录服务器并跳转到目标目录后，自动将控制权交给用户；
+* 如果该参数的值是以 / 结尾的目录路径，则会将该目录下的所有文件 和 文件夹 都上传到服务器的目标目录下；
+* 如果该参数的值不是以 / 结尾的 目录或文件，则会将 该目录 或 文件 上传到服务器的目标目录下；
 ```
 set sour "dist"
 ```
@@ -207,6 +223,15 @@ set targ "/data/mc/website/guo.binyong.com/www/webapp"
 set dele 1
 ```
 
+## prompt
+能匹配服务器的命令行提示符的字符串 或 正则表达式； 默认值：\S，即表示：包含非空字符的字符串；
+* 该参数只有在交互模式下才有效；
+* 该参数有助于精准识别 ssh 登录成功；
+* 由于该参数保存的是正则表达式，所以为了避免 tcl 正则的特殊字符 当作 tcl 的特殊字符去展开，建义在使用配置文件配置该参数时，将配置的正则表达式用 花括号 {} 包裹着；
+```
+set prompt {\S}
+```
+
 ## 配置文件示例
 sshcprc.tcl
 ```
@@ -216,4 +241,5 @@ set host 192.168.90.33
 set prot 9033
 set sour dist
 set targ "/data/mc/website/guo.binyong.com/www/webapp"
+set prompt {#}
 ```
