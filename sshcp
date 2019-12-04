@@ -9,7 +9,7 @@ sshcp 命令使您可以通过一个简短的命令就实现如下功能：
 * 把本地指定目录或文件 上传到 服务器的指定的目标目录中，上传之前也可配置是否要清空服务器的目标目录；
 * 自动登录服务器，并转到指定的目标目录中；
 
-[主页](https://github.com/GuoBinyong/sshcp)
+主页：<https://github.com/GuoBinyong/sshcp>
 
 # 语法
 ```
