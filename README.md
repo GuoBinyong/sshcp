@@ -1,5 +1,6 @@
-[安装方式]: ./安装说明.md
 [API帮助文档]: ./API帮助文档.md
+
+[赞赏码]: ./赞赏码.JPG
 
 [sshcp仓库]: https://github.com/GuoBinyong/sshcp
 [Homebrew]: https://brew.sh
@@ -11,9 +12,9 @@
 - [3. 特性](#3-特性)
 - [4. 依赖](#4-依赖)
 - [5. 安装方式](#5-安装方式)
-    - [5.1. 方式1:直接安装](#51-方式1直接安装)
-    - [5.2. 方式2:通过brew安装](#52-方式2通过brew安装)
-    - [5.3. 方式3:通过自带的下载命令安装](#53-方式3通过自带的下载命令安装)
+    - [方式1:直接安装](#方式1直接安装)
+    - [方式2:通过brew安装](#方式2通过brew安装)
+    - [方式3:通过自带的下载命令安装](#方式3通过自带的下载命令安装)
 - [6. 语法](#6-语法)
 - [7. 选项](#7-选项)
 - [8. 配置文件](#8-配置文件)
@@ -91,7 +92,7 @@ sshcp 依赖于 expect；所以运行些脚本之前，需要保证环境中能�
 
 # 5. 安装方式
 
-## 5.1. 方式1:直接安装
+## 方式1:直接安装
 直接将 [sshcp仓库][] 中的 sshcp 文件放入命令行的 PATH 目录中，如：`/usr/local/bin/`；
 
 **注意：**  
@@ -99,14 +100,14 @@ sshcp 依赖于 expect；所以运行些脚本之前，需要保证环境中能�
 
 
 
-## 5.2. 方式2:通过brew安装
+## 方式2:通过brew安装
 如果你的电脑上已经安装了包管理工具 [brew][Homebrew]，则可以通过 brew 来安装，命令如下：
 ```
 brew install sshcp
 ```
 
 
-## 5.3. 方式3:通过自带的下载命令安装
+## 方式3:通过自带的下载命令安装
 ```
 curl https://raw.githubusercontent.com/GuoBinyong/sshcp/master/sshcp -o /usr/local/bin/sshcp && chmod a+x /usr/local/bin/sshcp
 ```
@@ -273,3 +274,12 @@ set sour dist/
 set targ "/data/mc/website/guo.binyong.com/www/webapp"
 set prompt {#}
 ```
+
+
+
+
+--------------------
+
+> 有您的支持，我会在开源的道路上，越走越远
+
+![赞赏码][]
