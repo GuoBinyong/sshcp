@@ -208,7 +208,7 @@ set prot "9033"
 * 如果该参数的值是以 / 结尾的目录路径，则会将该目录下的所有文件 和 文件夹 都上传到服务器的目标目录下；
 * 如果该参数的值不是以 / 结尾的 目录或文件，则会将 该目录 或 文件 上传到服务器的目标目录下；
 ```
-set sour "dist"
+set sour "dist/"
 ```
 
 ## targ
@@ -239,7 +239,7 @@ set name keyanzhe
 set password 123456789
 set host 192.168.90.33
 set prot 9033
-set sour dist
+set sour dist/
 set targ "/data/mc/website/guo.binyong.com/www/webapp"
 set prompt {#}
 ```
