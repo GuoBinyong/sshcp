@@ -5,6 +5,8 @@
 [sshcp仓库]: https://github.com/GuoBinyong/sshcp
 [Homebrew]: https://brew.sh
 
+[issues]: https://github.com/GuoBinyong/sshcp/issues
+
 <!-- TOC -->
 
 - [1. 简介](#1-简介)
@@ -46,9 +48,9 @@ sshcp 命令使您可以通过一个简短的命令就实现如下功能：
 主页：<https://github.com/GuoBinyong/sshcp>
 
 **如果您在使用的过程中遇到了问题，或者有好的建议和想法，您都可以通过以下方式联系我，期待与您的交流：**  
-- 给该仓库提交 issues
+- 给该仓库提交 [issues][]
 - 给我 Pull requests
-- 邮箱：guobinyong@qq.com
+- 邮箱：<guobinyong@qq.com>
 - QQ：guobinyong@qq.com
 - 微信：keyanzhe
 
