@@ -14,12 +14,15 @@ sshcp 命令使您可以通过一个简短的命令就实现如下功能：
 # 语法
 ```
 sshcp [-tp|--type type] [-c|--conf conf] [-pw|--password password] [-h|--host host] [-p|--prot prot] [-s|--sour sour] [-t|--targ targ] [-d|--dele dele] [-pmt|--prompt prompt]
+
+sshcp [-help|--help|help]
 ```
 
 # 选项
 
 sshcp 命令支持以下选项
 
+* -help|--help|help  : 输出 sshcp 命令的帮助信息
 * -tp|--type  : 配置文件的类型，指定该参数，会优先匹配带有以该类型作为中缀名的配置文件；
 * -c|--conf  : 配置文件的路径
 * -n|--name  : ssh登录时的用户名
@@ -31,8 +34,7 @@ sshcp 命令支持以下选项
    * 如果该参数的值是以 / 结尾的目录路径，则会将该目录下的所有文件 和 文件夹 都上传到服务器的目标目录下；
    * 如果该参数的值不是以 / 结尾的 目录或文件，则会将 该目录 或 文件 上传到服务器的目标目录下；
 * -t|--targ  : 服器上的目标目录
-* -d|--dele : 在上传sour目录中的文件之前，是否删除 targ 目录中的所有文件； 0 : 不删除；1 : 删除； 默认值: 1 ;
-* -help|--help|help  : 输出 sshcp 命令的帮助信息
+* -d|--dele : 在上传sour目录中的文件之前，是否删除 targ 目录中的所有文件； 0 : 不删除；1 : 删除； 默认值: 0 ;
 * -pmt|--prompt  : 能匹配服务器的命令行提示符的字符串 或 正则表达式； 默认值：\S，即表示：包含非空字符的字符串；
    * 该参数只有在交互模式下才有效；
    * 该参数有助于精准识别 ssh 登录成功；
@@ -140,9 +142,9 @@ set targ "/data/mc/website/guo.binyong.com/www/webapp"
 ```
 
 ## dele
-在上传sour目录中的文件之前，是否删除 targ 目录中的所有文件； 0 : 不删除；1 : 删除； 默认值: 1 ;
+在上传sour目录中的文件之前，是否删除 targ 目录中的所有文件； 0 : 不删除；1 : 删除； 默认值: 0 ;
 ```
-set dele 1
+set dele 0
 ```
 
 ## prompt
